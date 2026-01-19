@@ -25,3 +25,14 @@ class Library:
             raise KeyError("Book not found")
 
         self.books[book_id]["status"] = "Available"
+        
+    def generate_report(self):
+        lines = []
+        header = "Book ID | Title | Author | Status"
+        lines.append(header)
+
+        for book_id, details in self.books.items():
+            line = f"{book_id} | {details['title']} | {details['author']} | {details['status']}"
+            lines.append(line)
+
+        return "\n".join(lines)
